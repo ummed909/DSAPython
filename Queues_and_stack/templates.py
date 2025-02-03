@@ -56,6 +56,13 @@ class Stack:
             self.top -=1
             return node
 
+    def get_size(self):
+        n=0
+        x=self.top
+        while x!=-1:
+            n+=1
+            x -= 1
+        return n
 
     def get_top(self):
         return self.stack[self.top]
