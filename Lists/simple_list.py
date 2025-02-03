@@ -7,6 +7,27 @@ class SimpleLinkedList:
     def __init__(self):
         self.head = None
 
+    # get position of x
+    def get_position(self,x):
+        r = 0
+        temp = self.head
+        while temp is not None:
+            r+= 1
+            if temp.data == x:
+                return r
+            temp = temp.next
+        if temp is None:
+            return -1
+
+    # search for en element
+    def search(self,x):
+        temp = self.head
+        while temp is not None:
+            if temp.data == x:
+                return True
+            temp = temp.next
+        return False
+
     def get_number_of_nodes(self):
         n=0
         temp = self.head
@@ -100,50 +121,50 @@ class SimpleLinkedList:
     def delete_first(self):
         if self.is_empty():
             print("Lists is empty")
-        else:
-            temp = self.head
-            x = self.head.data
-            self.head = self.head.next
-            del temp
-            return x
-        return None
+            return None
+        temp = self.head
+        x = self.head.data
+        self.head = self.head.next
+        del temp
+        return x
 
     # delete node x
     def delete_x(self, x):
         if self.is_empty():
             print("Lists is empty")
+            return None
+        if self.head.data == x:
+            self.delete_first()
+            return x
+        temp = self.head
+        prev = self.head
+        while temp and temp.data != x:
+            prev = temp
+            temp = temp.next
+        if temp:
+            prev.next = temp.next
+            del temp
+            return x
         else:
-            if self.head.data == x:
-                self.delete_first()
-                return x
-            temp = self.head
-            prev = self.head
-            while temp and temp.data != x:
-                prev = temp
-                temp = temp.next
-            if temp:
-                prev.next = temp.next
-                del temp
-                return x
-            else:
-                print("No x is found")
-                return None
+            print("No x is found")
+            return None
 
     # delete last node
     def delete_last(self):
         if self.is_empty():
             print("Lists is empty")
+            return None
+        temp = self.head
+        prev = None
+        while temp.next:
+            prev = temp
+            temp = temp.next
+        if prev is None:
+            return self.delete_first()
         else:
-            temp = self.head
-            prev = None
-            while temp.next:
-                prev = temp
-                temp = temp.next
-            if prev == None:
-                self.delete_first()
-            else:
-                prev.next = temp.next
-                del temp
-        return
+            r = temp.data
+            prev.next = temp.next
+            del temp
+            return r
 
 
