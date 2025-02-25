@@ -1,4 +1,5 @@
-from Queues_and_stack.templates import Queue,Stack
+from Queues.QueueArray import Queue
+from Stacks.StackArray import Stack
 
 class TreeNode:
     def __init__(self, value):
