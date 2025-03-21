@@ -29,16 +29,17 @@ class ABC_Graph(ABC):
     def get_shortest_path(self, value):
         pass
     @abstractmethod
-    def get_vertex(self, value):
+    def is_vertex_exist(self, value):
         pass
     @abstractmethod
-    def get_edge(self, value):
+    def is_edge_exist(self, value_1, value_2):
         pass
     @abstractmethod
-    def breath_first_search(self):
+    def breath_first_search(self, start):
         pass
     @abstractmethod
-    def depth_first_search(self):
+    def depth_first_search(self, start):
         pass
+
 
 
